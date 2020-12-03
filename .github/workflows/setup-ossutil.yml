@@ -34,3 +34,14 @@ jobs:
           local_path: build
           remote_path: docroot/static
           clean: true
+
+
+          on: [push]
+
+    - name: A job to Compile Latex file
+      uses: vinay0410/tectonic-action@master
+      env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tex_path: 'dir\article_3.tex'
+        push: 'yes'
