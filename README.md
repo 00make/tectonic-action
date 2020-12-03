@@ -1,6 +1,5 @@
 # Latex Action 0157
 
-
 This action compiles latex/xelatex files using [Tectonic](https://tectonic-typesetting.github.io/en-US/), which automatically downloads necessary dependencies, and compiles to pdf.
 
 ## Inputs
@@ -14,12 +13,14 @@ This action compiles latex/xelatex files using [Tectonic](https://tectonic-types
 **Optional** Compiled PDF is pushed, if `push` is passed as 'yes'.
 
 ## Outputs
+
 Pushes a Compiled PDF file parallel to the tex, xtx file, if push is passed as 'yes'.
 
 ## Example usage
 
 ### Pushes Compiled PDF
-```
+
+```yml
 on: [push]
 
 jobs:
@@ -38,7 +39,8 @@ jobs:
 ```
 
 ### Doesn't Push Compiled PDF
-```
+
+```yml
 on: [push]
 
 jobs:
