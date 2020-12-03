@@ -1,0 +1,271 @@
+<html>
+
+<head>
+    <title>零零后（北京）科技有限公司</title>
+    <meta http-equiv=Content-Type content="text/html; charset=UTF-8">
+
+<body oncontextmenu="self.event.returnValue=!1" onselectstart=return!1>
+    <style>
+        box-sizing:border-box
+        
+
+        input,
+        button,
+        textarea {
+            font-family: inherit;
+            -webkit-appearance: none
+        }
+
+        html,
+        body {
+            height: 100%
+        }
+
+        body {
+            background: #181818;
+            font-family: Montserrat;
+            overflow: hidden
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-size: inherit;
+            font-weight: 400;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-appearance: none;
+            outline: 0;
+            border-radius: 0;
+            background: 0 0;
+            border: none
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            height: 100%;
+            min-height: 100%;
+            width: 100%
+        }
+
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0
+        }
+
+        .plate {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 0;
+            text-align: center;
+            color: #7fff00;
+            letter-spacing: 4px;
+            font-size: 2.6em;
+            line-height: 2.5
+        }
+
+        a {
+            text-underline: none;
+            -webkit-appearance: none
+        }
+
+        .social {
+            padding-top: 1rem
+        }
+
+        .social svg {
+            height: 1.25rem;
+            margin: 0 .5rem;
+            fill: rgba(15, 255, 0, .5);
+            transition: all .2s ease
+        }
+
+        .social svg:hover {
+            fill: #7fff00
+        }
+
+        .social a {
+            vertical-align: middle;
+            display: inline-block;
+            opacity: 0;
+            visibility: hidden;
+            transition: all .7s ease .15s
+        }
+
+        .social__twitter {
+            -webkit-transform: translateX(-10px);
+            transform: translateX(-10px)
+        }
+
+        .social__codepen {
+            -webkit-transform: translateX(10px);
+            transform: translateX(10px)
+        }
+
+        .social.active {
+            opacity: 1
+        }
+
+        .social.active a {
+            opacity: 1;
+            visibility: visible;
+            -webkit-transform: none;
+            transform: none
+        }
+
+        .mouse {
+            position: absolute;
+            top: 0;
+            left: 0;
+            text-align: center;
+            padding: 1rem 0;
+            z-index: 2;
+            color: rgba(15, 255, 0, .3);
+            width: 100%;
+            letter-spacing: 6px;
+            font-size: 8.45em;
+            line-height: 2.5;
+            text-transform: uppercase;
+            transition: all .5s ease;
+            opacity: 0;
+            -webkit-transform: translateY(-15px);
+            transform: translateY(-15px)
+        }
+
+        .mouse.active {
+            -webkit-transform: none;
+            transform: none;
+            opacity: 1
+        }
+
+        .text-animation {
+            opacity: 0
+        }
+
+        .text-animation.active {
+            opacity: 1
+        }
+
+        .text-animation .letter {
+            opacity: 0;
+            transition: color .5s ease, opacity .3s ease;
+            -webkit-transform-origin: bottom;
+            transform-origin: bottom;
+            color: #7fff00
+        }
+
+        .text-animation .letter.active {
+            color: rgba(15, 255, 0, .3);
+            opacity: 1;
+            -webkit-transform: none;
+            transform: none;
+            -webkit-animation: color 5s ease infinite 3s;
+            animation: color 5s ease infinite 3s
+        }
+
+        @-webkit-keyframes color {
+            0% {
+                color: #7fff00
+            }
+
+            20% {
+                color: rgba(15, 255, 0, .3)
+            }
+
+            100% {
+                color: rgba(15, 255, 0, .3)
+            }
+        }
+
+        @keyframes color {
+            0% {
+                color: #7fff00
+            }
+
+            20% {
+                color: rgba(15, 255, 0, .3)
+            }
+
+            100% {
+                color: rgba(15, 255, 0, .3)
+            }
+        }
+    </style><svg display=none>
+        <symbol version=1.1 id=codepen xmlns=http://www.w3.org/2000/svg xlink=http://www.w3.org/1999/xlink x=0px y=0px
+            width=31.665px height=31.665px viewbox="0 0 31.665 31.665" style="enable-background:new 0 0 31.665 31.665"
+            xml:space=preserve>
+            <g>
+                <path d="M16.878,0.415c-0.854-0.565-1.968-0.552-2.809,0.034L1.485,9.214c-0.671,0.468-1.071,1.233-1.071,2.052v9.444
+                    c0,0.84,0.421,1.623,1.122,2.086l12.79,8.455c0.836,0.553,1.922,0.553,2.758,0l13.044-8.618c0.7-0.463,1.122-1.246,1.122-2.086
+                    v-9.279c0-0.839-0.421-1.622-1.121-2.085L16.878,0.415z M26.621,10.645l-4.821,3.237l-4.521-3.288L17.25,4.127L26.621,10.645z
+                    M13.979,4.133v6.329l-4.633,3.24l-4.621-3.099L13.979,4.133z M3.458,13.722l2.991,2.004l-2.991,2.093V13.722z M14.058,27.215
+                    l-9.331-6.258l4.661-3.258l4.67,3.133V27.215z M12.286,15.674l3.021-2.113l3.519,2.313l-3.119,2.095L12.286,15.674z M17.354,27.215
+                    V20.83l4.463-2.991l4.805,3.159L17.354,27.215z M27.954,17.927l-3.168-2.082l3.168-2.125V17.927z">
+                </path>
+            </g>
+        </symbol>
+        <symbol version=1.1 id=twitter xmlns=http://www.w3.org/2000/svg xlink=http://www.w3.org/1999/xlink x=0px y=0px
+            viewbox="0 0 612 612" style="enable-background:new 0 0 612 612" xml:space=preserve>
+            <g>
+                <g>
+                    <path
+                        d="M612,116.258c-22.525,9.981-46.694,16.75-72.088,19.772c25.929-15.527,45.777-40.155,55.184-69.411
+                        c-24.322,14.379-51.169,24.82-79.775,30.48c-22.907-24.437-55.49-39.658-91.63-39.658c-69.334,0-125.551,56.217-125.551,125.513
+                        c0,9.828,1.109,19.427,3.251,28.606C197.065,206.32,104.556,156.337,42.641,80.386c-10.823,18.51-16.98,40.078-16.98,63.101
+                        c0,43.559,22.181,81.993,55.835,104.479c-20.575-0.688-39.926-6.348-56.867-15.756v1.568c0,60.806,43.291,111.554,100.693,123.104
+                        c-10.517,2.83-21.607,4.398-33.08,4.398c-8.107,0-15.947-0.803-23.634-2.333c15.985,49.907,62.336,86.199,117.253,87.194
+                        c-42.947,33.654-97.099,53.655-155.916,53.655c-10.134,0-20.116-0.612-29.944-1.721c55.567,35.681,121.536,56.485,192.438,56.485
+                        c230.948,0,357.188-191.291,357.188-357.188l-0.421-16.253C573.872,163.526,595.211,141.422,612,116.258z">
+                    </path>
+                </g>
+            </g>
+        </symbol>
+    </svg>
+    <main><canvas class=plane-canvas id=plane-canvas height=950 width=1920></canvas><canvas class=main-canvas
+            id=main-canvas height=950 width=1920></canvas>
+        <div class=mouse id=mouse>Hold mouse1 button</div>
+        <div class=plate>
+            <h1 class="text-animation active" data-js=text><span class="letter active">零</span><span
+                    class="letter active"></span><span class="letter active">零</span><span
+                    class="letter active"></span><span class="letter active">后</span><span
+                    class="letter active"></span><span class="letter active">(</span><span
+                    class="letter active"></span><span class="letter active">北</span><span
+                    class="letter active"></span><span class="letter active">京</span><span
+                    class="letter active"></span><span class="letter active">)</span><span
+                    class="letter active"></span><span class="letter active">科</span><span
+                    class="letter active"></span><span class="letter active">技</span><span
+                    class="letter active"></span><span class="letter active">有</span><span
+                    class="letter active"></span><span class="letter active">限</span><span
+                    class="letter active"></span><span class="letter active">公</span><span
+                    class="letter active"></span><span class="letter active">司</span></h1>
+            <p class="text-animation active" data-js=text><span class="letter active">零</span><span
+                    class="letter active">零</span><span class="letter active"></span><span
+                    class="letter active">后</span><span class="letter active"></span><span
+                    class="letter active">™</span><span class="letter active"></span><span
+                    class="letter active">京</span><span class="letter active"></span><span
+                    class="letter active">I</span><span class="letter active"></span><span
+                    class="letter active">C</span><span class="letter active"></span><span
+                    class="letter active">P</span><span class="letter active"></span><span
+                    class="letter active">备</span><span class="letter active"></span><span
+                    class="letter active">1</span><span class="letter active"></span><span
+                    class="letter active">9</span><span class="letter active"></span><span
+                    class="letter active">0</span><span class="letter active"></span><span
+                    class="letter active">2</span><span class="letter active"></span><span
+                    class="letter active">0</span><span class="letter active"></span><span
+                    class="letter active">2</span><span class="letter active"></span><span
+                    class="letter active">2</span><span class="letter active"></span><span
+                    class="letter active">9</span><span class="letter active">号</span><span
+                    class="letter active"></span></p>
+        </div>
+    </main>
+    <script>function _classCallCheck(e, t) { if (!(e instanceof t)) throw new TypeError("Cannot call a class as a function") } var _createClass = function () { function e(e, t) { for (var a = 0; a < t.length; a++) { var n = t[a]; n.enumerable = n.enumerable || !1, n.configurable = !0, "value" in n && (n.writable = !0), Object.defineProperty(e, n.key, n) } } return function (t, a, n) { return a && e(t.prototype, a), n && e(t, n), t } }(), tools = { drawPath: function (e, t) { e.save(), e.beginPath(), t(), e.closePath(), e.restore() }, random: function (e, t, a) { var n = e + Math.random() * (t + (a ? 1 : 0) - e); return a ? parseInt(n) : n }, getVectorLength: function (e, t) { return Math.sqrt(Math.pow(e[0] - t[0], 2) + Math.pow(e[1] - t[1], 2)) }, easing: function (e, t, a, n) { return a * ((e = e / n - 1) * e * e + 1) + t }, cellEasing: function (e, t, a, n) { return a * (e /= n) * e * e * e + t } }, doc = { height: 0, width: 0 }, plane = { xCell: 0, yCell: 0, cells: [] }, context = { plane: null, main: null }, mouse = { x: 0, y: 0, coords: { x: 0, y: 0 }, down: { state: !1, x: 0, y: 0 } }, cfg = { cell: 35, sectionWidth: 8, sectionHeight: 1, numberOffset: 5, shadowBlur: !0, bgColor: "#181818" }, ui = { plane: "#plane-canvas", main: "#main-canvas", textNodes: "[data-js=text]", social: "#social", mouse: "#mouse" }, App = function () { function e() { _classCallCheck(this, e), this.state = { area: 0, time: Date.now(), lt: 0, planeProgress: 0, dotsProgress: 0, fadeInProgress: 0, textProgress: 0, stepOffset: 0, textOffset: 0, markupOffset: 0, glitches: [], animLines: [], animNumbers: [], tabIsActive: !0, planeIsDrawn: !1, mousePower: 0, textPixelData: [], text: {}, delta: 0, dlt: performance.now(), needRedraw: !0 }, this.bindNodes(), this.getDimensions(), mouse.x = doc.width / 2, mouse.y = doc.height / 2, this.start() } return _createClass(e, [{ key: "start", value: function () { this.initEvents(), this.canvasInit(), this.loop(), this.initCheckingInterval(), this.splitText() } }, { key: "splitText", value: function () { ui.textNodes.forEach(function (e) { var t = e.innerText; e.innerHTML = t.split("").reduce(function (e, t) { return e + ('<span class="letter">' + t + "</span>") }, "") }) } }, { key: "animateText", value: function () { var e = function () { ui.social.classList.add("active"), ui.mouse.classList.add("active") }; ui.textNodes.forEach(function (t, a) { t.classList.add("active"); for (var n = t.querySelectorAll(".letter"), o = Math.round(n.length / 2) + 1, l = function (t) { var l = n[t], i = n[n.length - t]; setTimeout(function () { l && l.classList.add("active"), i && i.classList.add("active"), t === o - 1 && a === ui.textNodes.length - 1 && e() }, 100 * t) }, i = 0; o > i; i++)l(i) }) } }, { key: "getDimensions", value: function () { doc.height = document.documentElement.clientHeight, doc.width = document.documentElement.clientWidth } }, { key: "updatePlane", value: function () { var e = doc.width, t = doc.height, a = Math.round(e / cfg.cell), n = e / a; plane.xCell = e / n % 2 !== 0 ? e / (e / n + 1) : n; var o = t / Math.round(a * (t / e)); plane.yCell = t / o % 2 !== 0 ? t / (t / o + 1) : o, plane.cells = [Math.round(e / plane.xCell), Math.round(t / plane.yCell)], plane.xCenter = Math.round(plane.cells[1] / 2), plane.yCenter = Math.round(plane.cells[0] / 2), plane.centerCoords = [plane.yCenter * plane.xCell, plane.xCenter * plane.yCell] } }, { key: "bindNodes", value: function () { for (var e in ui) ui[e] = document.querySelectorAll(ui[e]), 1 === ui[e].length && (ui[e] = ui[e][0]) } }, { key: "canvasInit", value: function () { var e = "10px Montserrat", t = "round", a = "rgba(15, 255, 0,0.1)"; context.plane = ui.plane.getContext("2d"), context.plane.lineCap = t, context.plane.lineJoin = t, context.plane.font = e, context.plane.fillStyle = a, context.plane.strokeStyle = a, context.main = ui.main.getContext("2d"), context.main.lineCap = t, context.main.lineJoin = t, context.main.font = e, context.main.fillStyle = a, context.main.strokeStyle = a, this.getTextPixels() } }, { key: "initEvents", value: function () { var e = this; window.addEventListener("resize", function (t) { e.getDimensions(), e.resizeHandler(t) }), document.addEventListener("mousemove", function (e) { mouse.x = e.clientX, mouse.y = e.clientY, mouse.coords = { x: (mouse.x / doc.width - .5) / .5, y: (mouse.y / doc.height - .5) / .5 * -1 } }), document.addEventListener("mousedown", function (e) { mouse.down = { state: !0, x: e.clientX, y: e.clientY } }), document.addEventListener("mouseup", function () { mouse.down.state = !1 }), document.addEventListener("contextmenu", function (e) { e.preventDefault() }), this.resizeHandler() } }, { key: "resizeHandler", value: function () { var e = this.state; ui.main.height = doc.height, ui.main.width = doc.width, ui.plane.height = doc.height, ui.plane.width = doc.width, e.area = doc.width * doc.height / 1e6, this.updatePlane(), this.updateTextConfig(), e.planeIsDrawn && this.getTextPixels(), e.needRedraw = !0 } }, { key: "updateTextConfig", value: function () { var e = this.state; e.text = { baseLine: "top", font: "800 270px Montserrat", value: "零零后" } } }, { key: "initCheckingInterval", value: function () { var e = this.state; setInterval(function () { e.tabIsActive = e.time <= e.lt ? !1 : !0, e.lt = e.time, e.needRedraw = !e.tabIsActive }, 100) } }, { key: "loop", value: function t() { var e = this, t = function a() { var t = context.main, n = e.state; n.time = Date.now(), t.clearRect(0, 0, doc.width, doc.height), e.updateState(), e.draw(), n.needRedraw && (n.needRedraw = !1), e.raf = requestAnimationFrame(a) }; t() } }, { key: "updateState", value: function () { var e = this.state, t = performance.now(); e.delta = t - e.dlt, e.dlt = t; var a = e.delta; mouse.down.state ? (e.mousePower += .001 * a, e.mousePower >= 1 && (e.mousePower = 1, ui.mouse.classList.remove("active"))) : (e.mousePower -= .001 * a, e.mousePower <= 0 && (e.mousePower = 0)); var n = tools.cellEasing(e.mousePower, 0, 1, 1); e.planeProgress >= .2 && (e.dotsProgress += 35e-5 * a, e.dotsProgress >= 1 && (e.dotsProgress = 1)), e.planeProgress += 35e-5 * a, e.planeProgress >= 1 && (e.planeProgress = 1), e.planeIsDrawn && (e.fadeInProgress += 15e-5 * a, e.fadeInProgress >= 1 && (e.fadeInProgress = 1), e.stepOffset += .002 * a + .0035 * n * a, e.textOffset += 5e-5 * a + .002 * n * a, e.markupOffset += 15e-5 * a + 35e-5 * n * a, e.textProgress += 5e-4 * a, e.textProgress >= 1 && (e.textProgress = 1)) } }, { key: "getTextPixels", value: function () { var e = context.main, t = this.state, a = (plane.xCell, plane.yCell); tools.drawPath(e, function () { e.fillStyle = "chartreuse", e.textBaseline = t.text.baseLine, e.font = t.text.font; var n = t.text.value, o = (parseInt(e.font), e.measureText(n).width), l = doc.width / 2 - o / 2, i = 1.75 * a; e.fillText(n, l, i) }); var n = e.getImageData(0, 0, doc.width, doc.height).data; t.textPixelData = []; for (var o = 10, l = 0; l < doc.height; l += o)for (var i = 0; i < doc.width; i += o) { var s = n[4 * (i + l * doc.width) - 1]; 255 == s && t.textPixelData.push({ x: i, y: l, value: tools.random(0, 1, !0) }) } e.clearRect(0, 0, doc.width, doc.height) } }, { key: "drawText", value: function () { var e = plane.yCell, t = context.main, a = this.state, n = a.textOffset, o = tools.cellEasing(a.mousePower, 0, 1, 1), l = a.textPixelData.length; tools.drawPath(t, function () { cfg.shadowBlur && (t.shadowColor = "rgba(15, 255, 0,0.025)", t.shadowBlur = 30 * a.mousePower), t.globalAlpha = .95 * a.fadeInProgress, t.textBaseline = a.text.baseLine, t.fillStyle = cfg.bgColor, t.font = a.text.font; var n = a.text.value, o = doc.width / 2 - t.measureText(n).width / 2, l = 1.75 * e; t.fillText(n, o, l) }); for (var i = function (e) { var i = a.textPixelData[e], s = i.x, r = i.y, c = i.value, d = e, u = (3 + 50 * o) * Math.sin(n * d), h = (10 + 50 * o) * Math.cos(n * d), f = (1 - o) * (e / l); tools.drawPath(t, function () { f && (t.globalAlpha = a.fadeInProgress, t.font = "8px Montserrat", t.fillStyle = "rgba(15,255,0," + .3 * f + ")", e % 2 === 0 && t.fillText(c + "", s, r + -1 * h), t.fillStyle = "rgba(15,255,0," + f + ")", t.fillRect(s + u, r, 5 * f * (1 - o), 1), t.fillRect(s, r + h, 1, 5 * f * (1 - o))) }) }, s = 0; s < a.textPixelData.length; s++)i(s) } }, { key: "draw", value: function () { var e = (context.main, this.state), t = plane.xCell, a = plane.yCell, n = plane.xCenter, o = plane.yCenter, l = e.planeProgress; this.state.planeProgress >= 1 && !e.planeIsDrawn && (e.planeIsDrawn = !0, this.startGeneratingGlitches(), this.startGeneratingLines(), this.startGeneratingNumbers(), this.getTextPixels(), this.animateText()), (!e.planeIsDrawn || e.dotsProgress < 1 || e.planeIsDrawn && e.needRedraw) && this.drawPlane(); for (var i = 0; i * t < doc.width + t; i++)for (var s = 0; s * a < doc.height + a; s++) { var r = i * t, c = s * a; e.planeIsDrawn && (this.drawMouseMoveInteraction({ i: i, i2: s, x: r, y: c }), s === n && i !== o && this.drawMarkupYAnimation({ i: i, i2: s, x: r, y: c, cp: l }), s !== n && i === o && this.drawMarkupXAnimation({ i: i, i2: s, x: r, y: c, cp: l })) } e.planeIsDrawn && (this.drawGlitches(), this.drawAnimLines(), this.drawNumbersAnimation(), this.drawText()) } }, { key: "startGeneratingNumbers", value: function () { function e() { var a = plane.cells, n = plane.xCell, o = plane.yCell, l = t.mousePower, i = tools.random(1 + 50 * (1 - l), 5 + 100 * (1 - l)) / t.area, s = { p: 0, color: "rgba(15, 255, 0," + tools.random(.01, .3) + ")", blinks: Array(tools.random(0, 3, !0)).fill(null).map(function () { return { at: tools.random(0, 1), dur: tools.random(0, .3) } }), pf: tools.random(75e-5, .01), x: tools.random(0, a[0], !0) * n, y: tools.random(0, a[1], !0) * o, value: tools.random(0, 1, !0) }; t.tabIsActive && t.animNumbers.push(s), setTimeout(e, i) } var t = this.state; e() } }, { key: "drawNumbersAnimation", value: function () { var e = context.main, t = this.state, a = plane.yCell, n = plane.xCell; t.animNumbers.forEach(function (o, l) { o.p += o.pf * t.delta; var i = !0; o.blinks.forEach(function (e) { o.p >= e.at && o.p <= e.at + e.dur && (i = !1) }), i && (tools.drawPath(e, function () { cfg.shadowBlur && (e.shadowColor = "chartreuse", e.shadowBlur = 10), e.globalAlpha = t.fadeInProgress, e.textBaseline = "top", e.font = "18px Montserrat"; var l = parseInt(e.font) || 18, i = e.measureText(o.value + "").width; e.fillStyle = o.color, e.fillText(o.value + "", o.x + n / 2 - i / 2, o.y + a / 2 - l / 2) }), o.p >= 1 && t.animNumbers.splice(l, 1)) }) } }, { key: "startGeneratingLines", value: function () { function e() { var a = plane.cells, n = plane.xCell, o = plane.yCell, l = t.mousePower, i = tools.random(25 + 80 * (1 - l), 75 + 1200 * (1 - l)) / t.area, s = { p: 0, color: tools.random(0, .15), pf: tools.random(5e-4, .00125), x: tools.random(0, a[0], !0) * n, y: tools.random(0, a[1], !0) * o }; s.coord = tools.random(0, 1, !0) ? "x" : "y", s.length = tools.random(2 * n, t.area * n * 5), s.dir = tools.random(0, 1, !0) ? 1 : -1, s.distance = s.length * tools.random(1, 2), t.tabIsActive && t.animLines.push(s), setTimeout(e, i) } var t = this.state; e() } }, { key: "drawAnimLines", value: function () { var e = context.main, t = this.state; t.animLines.forEach(function (a, n) { a.p += a.pf * t.delta; var o = tools.easing(a.p, 0, 1, 1), l = o / .5, i = 1 - (o - .5) / .5, s = "rgba(15, 255, 0," + (.1 + a.color * (.5 >= o ? l : i)) + ")", r = .5 >= o ? a.length * l : a.length * i, c = -1 === a.dir, d = "x" === a.coord, u = "y" === a.coord, h = d ? c ? -(r - a.distance * o) : -a.distance * o : 0, f = u ? c ? -(r - a.distance * o) : -a.distance * o : 0; tools.drawPath(e, function () { e.globalAlpha = t.fadeInProgress, e.fillStyle = s, e.fillRect(a.x + h + (d && .5 >= o ? (a.length - r) * a.dir : 0), a.y + f + (u && .5 >= o ? (a.length - r) * a.dir : 0), d ? r : 1, u ? r : 1) }), a.p >= 1 && t.animLines.splice(n, 1) }) } }, { key: "startGeneratingGlitches", value: function () { function e() { var a = plane.cells, n = plane.xCell, o = plane.yCell, l = t.mousePower, i = tools.random((5 + 100 * (1 - l)) / t.area, (25 + 1200 * (1 - l)) / t.area), s = { p: 0, color: "rgba(15, 255, 0," + tools.random(.01, 1) + ")", blinks: Array(tools.random(0, 3, !0)).fill(null).map(function () { return { at: tools.random(0, 1), dur: tools.random(0, .3) } }), pf: tools.random(.0015, .0035), x: tools.random(0, a[0], !0) * n, y: tools.random(0, a[1], !0) * o, width: n, height: o }; t.tabIsActive && t.glitches.push(s), setTimeout(e, i) } var t = this.state; e() } }, { key: "drawGlitches", value: function () { var e = context.main, t = this.state; t.glitches.forEach(function (a, n) { a.p += a.pf * t.delta; var o = !0; a.blinks.forEach(function (e) { a.p >= e.at && a.p <= e.at + e.dur && (o = !1) }), o && (tools.drawPath(e, function () { cfg.shadowBlur && (e.shadowColor = "chartreuse", e.shadowBlur = 30), e.globalAlpha = t.fadeInProgress, e.fillStyle = a.color, e.fillRect(a.x, a.y, a.width, a.height) }), a.p >= 1 && t.glitches.splice(n, 1)) }) } }, { key: "drawMouseMoveInteraction", value: function (e) { var t = context.main, a = this.state, n = a.fadeInProgress, o = a.stepOffset, l = a.mousePower, i = plane.xCenter, s = plane.yCenter, r = e.i, c = e.i2, d = e.x, u = e.y, h = [Math.abs(c - i), Math.abs(r - s)], f = (200 + 50 * l) * (r * c % 2) * Math.sin(h[0] - h[1]); if (!(100 >= f)) { var p = tools.getVectorLength([d, u], [mouse.x, mouse.y]); if (f >= p) { var g = (1 - p / f) * n, m = 50 * (1 - g), x = Math.sin(o + r) * m * (2 * Math.PI / 4) * ((r + c) % 4 == 0 ? -1 : 1), w = Math.cos(o + c) * m * (2 * Math.PI / 4), v = d + x, y = u + w, P = 25 * (1 - g), b = 3 + 10 * g, C = tools.getVectorLength([v, y], [mouse.x, mouse.y]), k = 1 - C / (f + 2 * m), M = "rgba(15,255,0," + .3 * g + ")", I = "rgba(15,255,0," + .7 * k * g + ")"; tools.drawPath(t, function () { t.strokeStyle = I, t.moveTo(v, y), t.lineTo(mouse.x, mouse.y), t.stroke() }), tools.drawPath(t, function () { t.strokeStyle = I, t.moveTo(d, u), t.lineTo(v, y), t.stroke() }), tools.drawPath(t, function () { t.fillStyle = M, t.arc(d, u, 1, 0, 2 * Math.PI), t.fill() }), tools.drawPath(t, function () { t.strokeStyle = "rgba(15,255,0," + .5 * g + ")", t.lineWidth = 1 + 2 * (1 - g), t.arc(d, u, 3 + 10 * (1 - g), 0, 2 * Math.PI), t.stroke() }), tools.drawPath(t, function () { t.fillStyle = "rgba(15,255,0," + g + ")", t.arc(v, y, 1, 0, 2 * Math.PI), t.fill() }), tools.drawPath(t, function () { cfg.shadowBlur && (t.shadowColor = "chartreuse", t.shadowBlur = P), t.lineWidth = b, t.strokeStyle = "rgba(15,255,0," + .75 * g + ")", t.arc(v, y, P, 0, 2 * Math.PI), t.stroke() }) } } } }, { key: "drawPlaneDotsAnimation", value: function (e) { var t = context.plane, a = e.dp, n = e.i, o = e.i2, l = e.x, i = e.y, s = plane.xCenter, r = plane.yCenter, c = [Math.abs(o - s), Math.abs(n - r)], d = c[0] * c[1], u = s * r, h = 1 / u, f = h * d, p = a * (a / f); p >= 1 && (p = 1); var g = p >= .5 ? (1 - p) / .5 : p / .5, m = 3; g && tools.drawPath(t, function () { t.fillStyle = "rgba(15,255,0," + .15 * g + ")", t.fillRect(l - 1, i - 1, m, m) }) } }, { key: "drawPlaneCenterLines", value: function (e) { var t = e.p, a = context.plane, n = plane.centerCoords; tools.drawPath(a, function () { a.fillStyle = "rgba(15,255,0," + (.2 + 1 * (1 - t)) + ")", a.fillRect(n[0], 0 + doc.height / 2 * (1 - t), 1, doc.height * t), a.fillRect(0 + doc.width / 2 * (1 - t), n[1], doc.width * t, 1) }) } }, { key: "drawYLines", value: function (e) { var t = e.i, a = e.cp, n = e.p, o = e.x, l = context.plane, i = plane.yCenter, s = 1 / i, r = Math.abs(t - i), c = s * r, d = a * (a / c); d >= 1 && (d = 1); var u = tools.cellEasing(d, 0, 1, 1); t && tools.drawPath(l, function () { l.fillStyle = "rgba(15,255,0," + (.05 + .35 * (1 - n)) + ")", l.fillRect(o, 0 + doc.height / 2 * (1 - u), 1, doc.height * u) }) } }, { key: "drawYMarkup", value: function (e) { var t = context.plane, a = (this.state, e.i), n = e.p, o = e.cp, l = e.x, i = e.y, s = plane.yCenter, r = 1 / s, c = Math.abs(a - s), d = r * c, u = [n >= d, d + r >= n], h = o * (o / d); h >= 1 && (h = 1); var f = u[0] && u[1] ? (n - d) / r : u[0] ? 1 : 0, p = a - s + ""; t.fillStyle = "rgba(15,255,0," + (.1 + .75 * (1 - h)) + ")"; var g = [l - t.measureText(p).width / 2, i + cfg.sectionWidth / 2 + cfg.numberOffset]; tools.drawPath(t, function () { var e = 50 * (1 - f); t.globalAlpha = f, t.fillRect(l, i - cfg.sectionWidth / 2 + e, cfg.sectionHeight, cfg.sectionWidth) }), tools.drawPath(t, function () { t.globalAlpha = f, t.textBaseline = "top", t.fillText(p, g[0], g[1] + -20 * (1 - f)) }) } }, { key: "drawXLines", value: function (e) { var t = context.plane, a = e.i2, n = e.cp, o = e.p, l = e.y, i = plane.xCenter, s = 1 / i, r = Math.abs(a - i), c = s * r, d = n * (n / c); d >= 1 && (d = 1); var u = tools.cellEasing(d, 0, 1, 1); a && tools.drawPath(t, function () { t.fillStyle = "rgba(15,255,0," + (.05 + .35 * (1 - o)) + ")", t.fillRect(0 + doc.width / 2 * (1 - u), l, doc.width * u, 1) }) } }, { key: "drawXMarkup", value: function (e) { var t = context.plane, a = (this.state, e.i2), n = e.p, o = e.cp, l = e.x, i = e.y, s = plane.xCenter, r = 1 / s, c = Math.abs(a - s), d = r * c, u = [n >= d, d + r >= n], h = o * (o / d); h >= 1 && (h = 1); var f = u[0] && u[1] ? (n - d) / r : u[0] ? 1 : 0; t.fillStyle = "rgba(15,255,0," + (.1 + .75 * (1 - h)) + ")", tools.drawPath(t, function () { var e = 50 * (1 - f); t.globalAlpha = f, t.fillRect(l - cfg.sectionWidth / 2 + e, i, cfg.sectionWidth, cfg.sectionHeight) }), tools.drawPath(t, function () { t.globalAlpha = f, t.textBaseline = "middle"; var e = [l + cfg.sectionWidth / 2 + cfg.numberOffset, i + cfg.sectionHeight / 2]; t.fillText(s - a + "", e[0] + -20 * (1 - f), e[1]) }) } }, { key: "drawPlane", value: function () { var e = this.state, t = context.plane; t.clearRect(0, 0, doc.width, doc.height); var a = plane.xCell, n = plane.yCell, o = plane.xCenter, l = plane.yCenter, i = tools.easing(e.planeProgress, 0, 1, 1), s = e.planeProgress, r = e.dotsProgress; this.drawPlaneCenterLines({ p: i }); for (var c = 0; c * a < doc.width + a; c++)for (var d = 0; d * n < doc.height + n; d++) { var u = c * a, h = d * n; c !== l && d !== o && this.drawPlaneDotsAnimation({ dp: r, i: c, i2: d, x: u, y: h }), d === o && c !== l && (this.drawYLines({ i: c, i2: d, p: i, cp: s, x: u, y: h }), this.drawYMarkup({ i: c, p: i, cp: s, x: u, y: h })), d !== o && c === l && (this.drawXLines({ i: c, i2: d, p: i, cp: s, x: u, y: h }), this.drawXMarkup({ i2: d, p: i, cp: s, x: u, y: h })) } } }, { key: "drawMarkupYAnimation", value: function (e) { var t = context.main, a = plane.yCenter, n = e.i, o = e.x, l = e.y, i = this.state, s = Math.sin(i.markupOffset), r = s >= 0 ? tools.cellEasing(Math.abs(s), 0, 1, 1) : 0, c = 1 / a, d = Math.abs(n - a), u = c * d, h = r >= u && u + c >= r ? (r - u) / c : 0; if (h) { var f = n - a + ""; t.fillStyle = "rgba(15,255,0," + (.1 + .75 * (1 - h)) + ")"; var p = [o - t.measureText(f).width / 2, l + cfg.sectionWidth / 2 + cfg.numberOffset]; tools.drawPath(t, function () { t.fillStyle = "rgba(15,255,0," + .5 * h + ")", t.fillRect(o, l - cfg.sectionWidth / 2, cfg.sectionHeight, cfg.sectionWidth) }), tools.drawPath(t, function () { cfg.shadowBlur && (t.shadowBlur = 5, t.shadowColor = "chartreuse"), t.fillStyle = "rgba(15,255,0," + .35 * h + ")", t.textBaseline = "top", t.fillText(f, p[0], p[1]) }) } } }, { key: "drawMarkupXAnimation", value: function (e) { var t = context.main, a = this.state, n = e.i2, o = e.x, l = e.y, i = Math.sin(a.markupOffset), s = 0 >= i ? tools.cellEasing(Math.abs(i), 0, 1, 1) : 0, r = plane.xCenter, c = 1 / r, d = Math.abs(n - r), u = c * d, h = s >= u && u + c >= s ? (s - u) / c : 0; h && (tools.drawPath(t, function () { t.fillStyle = "rgba(15,255,0," + .5 * h + ")", t.fillRect(o - cfg.sectionWidth / 2, l, cfg.sectionWidth, cfg.sectionHeight) }), tools.drawPath(t, function () { cfg.shadowBlur && (t.shadowBlur = 5, t.shadowColor = "chartreuse"), t.fillStyle = "rgba(15,255,0," + .3 * h + ")", t.textBaseline = "middle"; var e = [o + cfg.sectionWidth / 2 + cfg.numberOffset, l + cfg.sectionHeight / 2]; t.fillText(r - n + "", e[0], e[1]) })) } }]), e }(); window.addEventListener("load", function () { window.app = new App });</script>
+    <div id=translate-button style=display:none><img
+            src=data:image/png;base64,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>
+    </div>
