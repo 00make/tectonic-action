@@ -38,5 +38,5 @@ jobs:
             cos_bucket: ${{ secrets.COS_BUCKET }}
             cos_region: ${{ secrets.COS_REGION }}
             local_path: ./
-            remote_path: docroot/
+            remote_path: docroot
             clean: true
