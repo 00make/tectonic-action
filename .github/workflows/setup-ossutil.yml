@@ -28,4 +28,4 @@ jobs:
       - name: cp files to aliyun
         # 如果是把xx 目录下的文件推送到 oss 的yy bucket 下的zz文件夹下就是:
         # run: ossutil cp ./xx oss://yy/zz -rf
-        run: ossutil cp ./ oss://bucket2000/tectonic-action -rf -u
+        run: ossutil cp ./ oss://bucket2000/tectonic-action -rfu
