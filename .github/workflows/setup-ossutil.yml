@@ -35,10 +35,10 @@ jobs:
           remote_path: docroot/static
           clean: true
 
-      - name: A job to Compile Latex file
-        uses: vinay0410/tectonic-action@master
-        env:
-          GITHUB_TOKEN: ${{ secrets.GSEC_TOKEN }}
-        with:
-          tex_path: 'file.tex'
-          push: 'yes'
+      # - name: A job to Compile Latex file
+      #   uses: vinay0410/tectonic-action@master
+      #   env:
+      #     GITHUB_TOKEN: ${{ secrets.GSEC_TOKEN }}
+      #   with:
+      #     tex_path: 'file.tex'
+      #     push: 'yes'
