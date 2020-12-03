@@ -26,7 +26,6 @@ jobs:
           access-key-secret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
 
       - name: cp files to aliyun
-        # 进入目录，把左右文件 推送到 timing-web根目录下
         # 如果是把xx 目录下的文件推送到 oss 的yy bucket 下的zz文件夹下就是:
         # run: ossutil cp ./xx oss://yy/zz -rf
-        run: ossutil cp ./ oss://bucket2000 -rf
+        run: ossutil cp ./ oss://bucket2000/tectonic-action -rf -u
