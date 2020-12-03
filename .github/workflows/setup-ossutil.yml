@@ -32,6 +32,5 @@ jobs:
           cos_bucket: ${{ secrets.COS_BUCKET }}
           cos_region: ${{ secrets.COS_REGION }}
           local_path: /
-          local_path: build1
           remote_path: docroot/static
           clean: true
