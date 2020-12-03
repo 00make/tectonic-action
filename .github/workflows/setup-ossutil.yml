@@ -21,7 +21,7 @@ jobs:
           access-key-id: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
           access-key-secret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
 
-      - name: ossutil-cp
+      - name: oss-cp
         run: ossutil cp ./ oss://bucket2000/tectonic-action -rf
 
       - name: cos-action
@@ -31,6 +31,6 @@ jobs:
           secret_key: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }}
           cos_bucket: ${{ secrets.COS_BUCKET }}
           cos_region: ${{ secrets.COS_REGION }}
-          local_path: /
+          local_path: build
           remote_path: docroot/static
           clean: true
