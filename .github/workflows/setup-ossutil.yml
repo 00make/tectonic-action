@@ -2,9 +2,11 @@ name: upload oss
 # 构建到master分支
 on:
   push: 
-  branches: - master
+  branches: 
+  - master
   pull_request: 
-  branches: - master
+  branches: 
+  - master
 
 jobs:
   build:
