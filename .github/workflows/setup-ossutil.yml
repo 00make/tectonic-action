@@ -30,13 +30,31 @@ jobs:
 #         # run: ossutil cp ./xx oss://yy/zz -rf
 #         run: ossutil cp ./ oss://bucket2000/tectonic-action -rf
         
-      - name: cos-action
-        uses: TencentCloud/cos-action@v1
+#       - name: cos-action
+#         uses: TencentCloud/cos-action@v1
+#         with:
+#             secret_id: ${{ secrets.TENCENT_CLOUD_SECRET_ID }}
+#             secret_key: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }}
+#             cos_bucket: ${{ secrets.COS_BUCKET }}
+#             cos_region: ${{ secrets.COS_REGION }}
+#             local_path: ./
+#             remote_path: doc
+# #             clean: true
+
+
+      - name: setup-node
+        uses: actions/setup-node@v1
         with:
-            secret_id: ${{ secrets.TENCENT_CLOUD_SECRET_ID }}
-            secret_key: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }}
-            cos_bucket: ${{ secrets.COS_BUCKET }}
-            cos_region: ${{ secrets.COS_REGION }}
-            local_path: ./
-            remote_path: doc
-#             clean: true
+          node-version: "10.x"
+
+      - name: Build project
+        run: yarn && yarn build
+
+      - name: tencent-cos-action
+        uses: zkqiang/tencent-cos-action@v0.1.0
+        with:
+          args: delete -r -f / && upload -r ./ /
+          secret_id: ${{ secrets.TENCENT_CLOUD_SECRET_ID }}
+          secret_key: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }}
+          bucket: ${{ secrets.COS_BUCKET }}
+          region: ${{ secrets.COS_REGION }}
