@@ -23,7 +23,7 @@ jobs:
 
       - name: oss-cp
         # run: ossutil cp ./ oss://bucket2000/tectonic-action -rf
-        run: ossutil cp -r -u ./ oss://bucket2000/tectonic-action
+        run: ossutil cp -rf -u ./ oss://bucket2000/
 
       - name: cos-action
         uses: TencentCloud/cos-action@master
