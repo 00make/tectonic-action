@@ -1,12 +1,8 @@
 name: upload oss
 # 构建到master分支
 on:
-  push:
-    branches:
-      - master
-  pull_request:
-    branches:
-      - master
+  push: branches: - master
+  pull_request: branches: - master
 
 jobs:
   build:
@@ -16,18 +12,14 @@ jobs:
       - name: checkout
         uses: actions/checkout@master
 
-      #       - name: setup-ossutil
-      #         # 这个action就是把github的代码，检出到aliyun，所以要用到阿里云的access-key和access-id
-      #         uses: manyuanrong/setup-ossutil@master
-      #         with:
-      #           endpoint: oss-cn-beijing.aliyuncs.com
-      #           access-key-id: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
-      #           access-key-secret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+      - name: setup-ossutil
+        uses: manyuanrong/setup-ossutil@master
+        with:
+        endpoint: oss-cn-beijing.aliyuncs.com
+        access-key-id: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
+        access-key-secret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
 
-      #       - name: cp files to aliyun
-      #         # 如果是把xx 目录下的文件推送到 oss 的yy bucket 下的zz文件夹下就是:
-      #         # run: ossutil cp ./xx oss://yy/zz -rf
-      #         run: ossutil cp ./ oss://bucket2000/tectonic-action -rf
+        run: ossutil cp ./ oss://bucket2000/tectonic-action -rf
 
       - name: cos-action
         uses: TencentCloud/cos-action@v1
