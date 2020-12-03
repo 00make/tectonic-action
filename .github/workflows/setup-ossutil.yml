@@ -2,11 +2,9 @@ name: upload oss
 
 on:
   push: 
-    branches: 
-      - master
+    branches: master
   pull_request: 
-    branches: 
-      - master
+    branches: master
 
 jobs:
   build:
@@ -27,12 +25,13 @@ jobs:
         run: ossutil cp ./ oss://bucket2000/tectonic-action -rf
 
       - name: cos-action
-        uses: TencentCloud/cos-action@v1
+        uses: TencentCloud/cos-action@master
         with:
           secret_id: ${{ secrets.TENCENT_CLOUD_SECRET_ID }}
           secret_key: ${{ secrets.TENCENT_CLOUD_SECRET_KEY }}
           cos_bucket: ${{ secrets.COS_BUCKET }}
           cos_region: ${{ secrets.COS_REGION }}
-          local_path: 
+          local_path: /
+          local_path: build1
           remote_path: docroot/static
           clean: true
