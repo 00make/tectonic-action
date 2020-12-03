@@ -1,0 +1,32 @@
+# 在action的构建进度中展示的名字
+name: upload oss
+# 构建到master分支
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    # 这是固定死的，暂时不懂
+    runs-on: ubuntu-latest
+
+    steps:
+      #拉取代码
+      - name: Checkout
+        # 这个action 就是检出最近代码
+        uses: actions/checkout@master
+      - name: setup aliyun oss
+        # 这个action就是把github的代码，检出到aliyun，所以要用到阿里云的access-key和access-id
+        uses: manyuanrong/setup-ossutil@master
+        with:
+          endpoint: oss-cn-beijing.aliyuncs.com
+          access-key-id: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
+          access-key-secret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+
+      - name: cp files to aliyun
+        # 进入目录，把左右文件 推送到 timing-web根目录下
+        # 如果是把xx 目录下的文件推送到 oss 的yy bucket 下的zz文件夹下就是:
+        # run: ossutil cp ./xx oss://yy/zz -rf
+        run: ossutil cp ./ oss://bucket2000 -rf
