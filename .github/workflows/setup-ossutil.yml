@@ -16,18 +16,19 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@master
-      - name: setup-ossutil
-        # 这个action就是把github的代码，检出到aliyun，所以要用到阿里云的access-key和access-id
-        uses: manyuanrong/setup-ossutil@master
-        with:
-          endpoint: oss-cn-beijing.aliyuncs.com
-          access-key-id: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
-          access-key-secret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
+        
+#       - name: setup-ossutil
+#         # 这个action就是把github的代码，检出到aliyun，所以要用到阿里云的access-key和access-id
+#         uses: manyuanrong/setup-ossutil@master
+#         with:
+#           endpoint: oss-cn-beijing.aliyuncs.com
+#           access-key-id: ${{ secrets.ALIYUN_ACCESS_KEY_ID }}
+#           access-key-secret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
 
-      - name: cp files to aliyun
-        # 如果是把xx 目录下的文件推送到 oss 的yy bucket 下的zz文件夹下就是:
-        # run: ossutil cp ./xx oss://yy/zz -rf
-        run: ossutil cp ./ oss://bucket2000/tectonic-action -rf
+#       - name: cp files to aliyun
+#         # 如果是把xx 目录下的文件推送到 oss 的yy bucket 下的zz文件夹下就是:
+#         # run: ossutil cp ./xx oss://yy/zz -rf
+#         run: ossutil cp ./ oss://bucket2000/tectonic-action -rf
         
       - name: cos-action
         uses: TencentCloud/cos-action@v1
@@ -37,5 +38,5 @@ jobs:
             cos_bucket: ${{ secrets.COS_BUCKET }}
             cos_region: ${{ secrets.COS_REGION }}
             local_path: ./
-            remote_path: docroot/static
+            remote_path: docroot/
             clean: true
