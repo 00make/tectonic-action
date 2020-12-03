@@ -22,7 +22,8 @@ jobs:
           access-key-secret: ${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}
 
       - name: oss-cp
-        run: ossutil cp ./ oss://bucket2000/tectonic-action -rf
+        # run: ossutil cp ./ oss://bucket2000/tectonic-action -rf
+        run: ossutil cp -r ./ oss://bucket2000/tectonic-action -u
 
       - name: cos-action
         uses: TencentCloud/cos-action@master
