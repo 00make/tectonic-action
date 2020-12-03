@@ -40,5 +40,5 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GSEC_TOKEN }}
         with:
-          tex_path: 'dir\file.tex'
-          push: 'yes' 
+          tex_path: 'file.tex'
+          push: 'yes'
